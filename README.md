@@ -7,6 +7,8 @@ composer install
 
 docker-compose up `- in project directory`
 
+`in new tab or terminal: `
+
 php bin/console doctrine:database:create `- in project directory`
 
 php bin/console doctrine:migrations:migrate `- in project directory`
