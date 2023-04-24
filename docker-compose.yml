@@ -1,0 +1,29 @@
+version: '3'
+services:
+  db:
+    image: mariadb:10.11.2
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: example
+    volumes:
+      - ./mysql:/var/lib/mysql
+    networks:
+      work-net:
+        ipv4_address: 172.21.0.25
+    ports:
+      - "3306:3306"
+  adminer:
+    image: adminer
+    restart: always
+    networks:
+      work-net:
+        ipv4_address: 172.21.0.26
+    ports:
+      - "8081:8080"
+
+networks:
+  work-net:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 172.21.0.0/25
